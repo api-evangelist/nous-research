@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: Nous Research Inference API (Nous Portal) Chat API
+  version: v1
+  description: 'OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1. Exposes a model catalog and a chat-completions endpoint aggregating Nous Research''s own Hermes models alongside a broad catalog of third-party open and frontier models (OpenRouter-style routing). Requests authenticate with a Nous Portal API key (Bearer token). The API additionally supports the x402 HTTP payment protocol: an un-authenticated request returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC micropayment, enabling pay-per- request agentic access without a pre-provisioned account. This specification was DERIVED by probing the live public API (GET /v1/models returns 200 with the model catalog; POST /v1/chat/completions returns 402 with an x402 payment envelope when unauthenticated). Only endpoints observed on the live host are described here; other OpenAI- compatible routes may exist but were not verified.'
+  x-source: https://inference-api.nousresearch.com/v1
+  x-derived-by: api-evangelist enrichment pipeline (live probe)
+servers:
+- url: https://inference-api.nousresearch.com/v1
+  description: Nous Research inference API (production)
+security:
+- bearerAuth: []
+tags:
+- name: Chat
+  description: OpenAI-compatible chat completions.
+paths:
+  /chat/completions:
+    post:
+      tags:
+      - Chat
+      operationId: createChatCompletion
+      summary: Create a chat completion
+      description: 'OpenAI-compatible chat completions. Provide a `model` id from GET /models and a `messages` array. Supports streaming via Server-Sent Events when `stream: true`. Authenticate with a Nous Portal API key as `Authorization: Bearer <key>`; alternatively an un-authenticated request returns HTTP 402 with an x402 Solana USDC payment envelope for pay-per-request access.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: The chat completion result (or an SSE stream when `stream` is true).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletion'
+        '400':
+          description: Malformed request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '402':
+          description: Payment required. Returned for un-authenticated requests; body is an x402 payment envelope describing the exact Solana USDC micropayment accepted for this request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/X402PaymentRequired'
+        '429':
+          description: Rate limited.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    X402PaymentRequired:
+      type: object
+      description: x402 payment envelope returned with HTTP 402.
+      properties:
+        x402Version:
+          type: integer
+          example: 1
+        accepts:
+          type: array
+          items:
+            type: object
+            properties:
+              scheme:
+                type: string
+                example: exact
+              network:
+                type: string
+                example: solana
+              maxAmountRequired:
+                type: string
+              resource:
+                type: string
+              description:
+                type: string
+              mimeType:
+                type: string
+              payTo:
+                type: string
+              maxTimeoutSeconds:
+                type: integer
+              asset:
+                type: string
+                description: Token mint (USDC on Solana).
+        error:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
+    ChatCompletionRequest:
+      type: object
+      properties:
+        model:
+          type: string
+          description: A model id from GET /models.
+          example: nousresearch/hermes-4-405b
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        stream:
+          type: boolean
+          description: Stream the response as Server-Sent Events.
+          default: false
+        temperature:
+          type: number
+        max_tokens:
+          type: integer
+        top_p:
+          type: number
+        tools:
+          type: array
+          items:
+            type: object
+      required:
+      - model
+      - messages
+    ChatCompletion:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+    ChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+        content:
+          type: string
+      required:
+      - role
+      - content
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Nous Portal API key supplied as: Authorization: Bearer <key>'

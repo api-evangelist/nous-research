@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Nous Research Inference API (Nous Portal) Chat Models API
+  version: v1
+  description: 'OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1. Exposes a model catalog and a chat-completions endpoint aggregating Nous Research''s own Hermes models alongside a broad catalog of third-party open and frontier models (OpenRouter-style routing). Requests authenticate with a Nous Portal API key (Bearer token). The API additionally supports the x402 HTTP payment protocol: an un-authenticated request returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC micropayment, enabling pay-per- request agentic access without a pre-provisioned account. This specification was DERIVED by probing the live public API (GET /v1/models returns 200 with the model catalog; POST /v1/chat/completions returns 402 with an x402 payment envelope when unauthenticated). Only endpoints observed on the live host are described here; other OpenAI- compatible routes may exist but were not verified.'
+  x-source: https://inference-api.nousresearch.com/v1
+  x-derived-by: api-evangelist enrichment pipeline (live probe)
+servers:
+- url: https://inference-api.nousresearch.com/v1
+  description: Nous Research inference API (production)
+security:
+- bearerAuth: []
+tags:
+- name: Models
+  description: Model discovery and catalog.
+paths:
+  /models:
+    get:
+      tags:
+      - Models
+      operationId: listModels
+      summary: List available models
+      description: Returns the catalog of models available through the Nous Research inference API, including id, pricing, context length, architecture (input/output modalities), and supported parameters. Public — no authentication required (verified 200 without credentials).
+      security: []
+      responses:
+        '200':
+          description: The list of available models.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelList'
+components:
+  schemas:
+    ModelList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+      required:
+      - data
+    Model:
+      type: object
+      description: A model available through the inference API.
+      properties:
+        id:
+          type: string
+          example: nousresearch/hermes-4-405b
+        canonical_slug:
+          type: string
+        hugging_face_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        context_length:
+          type: integer
+        architecture:
+          type: object
+          properties:
+            modality:
+              type: string
+            input_modalities:
+              type: array
+              items:
+                type: string
+            output_modalities:
+              type: array
+              items:
+                type: string
+            tokenizer:
+              type: string
+        pricing:
+          type: object
+          description: Per-token prices in USD (string decimals).
+          properties:
+            prompt:
+              type: string
+            completion:
+              type: string
+            input_cache_read:
+              type: string
+        supported_parameters:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - name
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Nous Portal API key supplied as: Authorization: Bearer <key>'
