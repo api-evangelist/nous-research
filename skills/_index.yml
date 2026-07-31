@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/nous-research-inference-api-openapi.yml
+skills:
+- file: nous-research-chat-completion.md
+  name: Generate a chat completion with a Nous model
+  api: openapi/nous-research-inference-api-openapi.yml
+  operations: [listModels, createChatCompletion]
+- file: nous-research-list-models.md
+  name: Discover available Nous inference models
+  api: openapi/nous-research-inference-api-openapi.yml
+  operations: [listModels]

@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+format: openai-error-envelope
+source: openapi/nous-research-inference-api-openapi.yml + live probe
+note: >-
+  Errors follow the OpenAI-style envelope { "error": { "message", "type", "code" } }.
+  The 402 response is NOT that envelope — it is an x402 payment envelope observed
+  verbatim on the live host (see x402 entry). Nous does not publish an
+  RFC 9457 application/problem+json error registry on the accessible surface.
+problems:
+- status: 400
+  title: Bad request
+  meaning: Malformed request body or invalid parameters.
+  source_operation: openapi/nous-research-inference-api-openapi.yml#createChatCompletion
+- status: 401
+  title: Unauthorized
+  meaning: Missing or invalid Nous Portal API key.
+  source_operation: openapi/nous-research-inference-api-openapi.yml#createChatCompletion
+- status: 402
+  title: Payment required (x402)
+  meaning: >-
+    Returned for un-authenticated requests to a paid endpoint. Body is an x402
+    envelope { x402Version, accepts:[{scheme:"exact", network:"solana",
+    maxAmountRequired, resource, payTo, asset, maxTimeoutSeconds}], error }.
+    Verified live on POST /v1/chat/completions with model nousresearch/hermes-4-405b.
+  format: x402
+  source_operation: openapi/nous-research-inference-api-openapi.yml#createChatCompletion
+- status: 429
+  title: Too many requests
+  meaning: Rate limit exceeded for the API key or host.
+  source_operation: openapi/nous-research-inference-api-openapi.yml#createChatCompletion

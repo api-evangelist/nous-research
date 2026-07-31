@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/nous-research-inference-api-openapi.yml + live probe
+note: >-
+  Cross-cutting standards the API conforms to, derived from observed behavior.
+  No published compliance program (SOC 2 / ISO 27001 / etc.) was found, so no
+  Compliance pointer is emitted.
+standards:
+- id: openai-chat-completions-api
+  conforms: true
+  evidence: >-
+    /v1/chat/completions accepts the OpenAI request shape and /v1/models returns
+    an OpenAI/OpenRouter-style catalog; base_url override with an OpenAI SDK works.
+- id: x402-payment-protocol
+  conforms: true
+  evidence: >-
+    Un-authenticated POST /v1/chat/completions returns HTTP 402 with an
+    x402Version:1 envelope (scheme "exact", network "solana", USDC asset).
+- id: sse-streaming
+  conforms: true
+  evidence: 'Streaming responses via Server-Sent Events when stream:true.'
+- id: oauth2
+  conforms: false
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the OpenAI error envelope, not application/problem+json.

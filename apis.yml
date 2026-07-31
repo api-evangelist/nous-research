@@ -1,27 +1,128 @@
 aid: nous-research
 name: Nous Research
-description: 'Nous Research is a company surfaced as a portfolio company of paradigm and added to the
-  API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Nous Research is an AI research and infrastructure company ("The AI Accelerator
+  Company") known for the open-weight Hermes family of language models (including
+  Hermes 4) and for Nous Portal, an OpenAI-compatible inference API served at
+  inference-api.nousresearch.com. The Portal aggregates Nous's own Hermes models
+  alongside a broad catalog of open and frontier third-party models (OpenRouter-
+  style routing, 280+ models) behind a single chat-completions endpoint.
+  Distinctively, the inference API supports the x402 HTTP payment protocol,
+  returning HTTP 402 with a Solana USDC micropayment envelope so agents can pay
+  per request without a pre-provisioned account. Beyond inference, Nous ships the
+  Hermes Agent framework, Atropos RL environments, and Psyche/DisTrO for
+  distributed model training over the internet. Backed by Paradigm.
 url: https://raw.githubusercontent.com/api-evangelist/nous-research/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - paradigm
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: active
+x-tier-reason: has-public-api
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://nousresearch.com/wp-content/uploads/2024/03/android-chrome-512x512-1-300x300.png
 tags:
 - Company
 - Ai
-apis: []
+- Machine Learning
+- Large Language Models
+- Inference
+- Agents
+- Open Weights
+- x402
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: nous-research:nous-research-chat-api
+  name: Nous Research Chat API
+  description: OpenAI-compatible chat completions.
+  humanURL: https://portal.nousresearch.com/docs
+  baseURL: https://inference-api.nousresearch.com/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/nous-research-chat-api-openapi.yml
+  - type: InterfaceLicense
+    url: https://portal.nousresearch.com/docs
+- aid: nous-research:nous-research-models-api
+  name: Nous Research Models API
+  description: Model discovery and catalog.
+  humanURL: https://portal.nousresearch.com/docs
+  baseURL: https://inference-api.nousresearch.com/v1
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/nous-research-models-api-openapi.yml
+  - type: InterfaceLicense
+    url: https://portal.nousresearch.com/docs
 common:
+- type: AgenticAccess
+  url: agentic-access/nous-research-agentic-access.yml
+- type: MCPServer
+  url: mcp/nous-research-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/nous-research-llms.txt
+- type: Conventions
+  url: conventions/nous-research-conventions.yml
+- type: ErrorCatalog
+  url: errors/nous-research-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/nous-research-lifecycle.yml
+- type: Conformance
+  url: conformance/nous-research-conformance.yml
+- type: DataModel
+  url: data-model/nous-research-data-model.yml
+- type: Overlay
+  url: overlays/nous-research-inference-api-overlay.yaml
+- type: DomainSecurity
+  url: security/nous-research-domain-security.yml
+- type: Authentication
+  url: authentication/nous-research-authentication.yml
 - type: Website
   url: https://nousresearch.com
+- type: DeveloperPortal
+  url: https://portal.nousresearch.com
+- type: Documentation
+  url: https://portal.nousresearch.com/docs
+- type: APIReference
+  url: https://portal.nousresearch.com/docs
+- type: SignUp
+  url: https://portal.nousresearch.com
+- type: Blog
+  url: https://nousresearch.com/blog
+- type: GitHubOrganization
+  url: https://github.com/NousResearch
+- type: Support
+  url: https://discord.gg/jqVphNsB4H
+- type: HuggingFace
+  url: https://huggingface.co/NousResearch
+- type: Twitter
+  url: https://twitter.com/nousresearch
+- type: LinkedIn
+  url: https://www.linkedin.com/company/nousresearch/
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

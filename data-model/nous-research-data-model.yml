@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/nous-research-inference-api-openapi.yml
+entities:
+- name: Model
+  description: An available inference model, returned by GET /v1/models.
+  id_field: id
+  id_format: 'namespace/slug, e.g. nousresearch/hermes-4-405b'
+  key_fields: [id, name, context_length, pricing, architecture, supported_parameters]
+- name: ChatCompletion
+  description: The result of a chat-completions request.
+  key_fields: [id, model, choices, usage]
+- name: ChatMessage
+  description: A single message in a conversation (role + content).
+  key_fields: [role, content]
+relationships:
+- from: ChatCompletion
+  to: Model
+  type: belongs_to
+  via: model
+- from: ChatCompletion
+  to: ChatMessage
+  type: has_many
+  via: choices[].message
+- from: ChatCompletionRequest
+  to: ChatMessage
+  type: has_many
+  via: messages

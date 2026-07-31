@@ -1,0 +1,13 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/nous-research-inference-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Nous Portal API key supplied as: Authorization: Bearer <key>'
+  sources:
+  - openapi/nous-research-inference-api-openapi.yml

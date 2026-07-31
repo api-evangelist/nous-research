@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Nous Research Inference API
+  version: 1.0.0
+extends: openapi/nous-research-inference-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: nous-research
+    x-apievangelist-openai-compatible: true
+    x-apievangelist-payment-protocol: x402
+    x-apievangelist-notes: >-
+      Derived by live-probing the public API. GET /v1/models is public;
+      POST /v1/chat/completions requires a Bearer API key or an x402 Solana
+      USDC micropayment.
+- target: $.paths['/models'].get
+  update:
+    x-apievangelist-public: true
+- target: $.paths['/chat/completions'].post
+  update:
+    x-apievangelist-x402: true
+    x-apievangelist-streaming: server-sent-events

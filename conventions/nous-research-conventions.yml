@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from live probes of https://inference-api.nousresearch.com/v1 and the
+  OpenAI-compatible request/response shapes; docs at portal.nousresearch.com/docs
+  are behind bot protection and could not be read verbatim.
+summary: >-
+  Nous Portal exposes an OpenAI-compatible inference surface with OpenRouter-style
+  model routing and a distinctive x402 pay-per-request path.
+authentication:
+  style: bearer-api-key
+  header: Authorization
+  format: 'Bearer <nous-portal-api-key>'
+  keys_issued_at: https://portal.nousresearch.com
+  alt: >-
+    x402 HTTP payment protocol — an un-authenticated request to a paid endpoint
+    returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC
+    micropayment (scheme "exact", network "solana"), enabling agentic
+    pay-per-request access without a pre-provisioned API key.
+compatibility:
+  openai_compatible: true
+  base_url: https://inference-api.nousresearch.com/v1
+  note: >-
+    Standard OpenAI SDKs work by overriding base_url; chat completions follow the
+    OpenAI /v1/chat/completions request and response shape.
+model_routing:
+  style: openrouter
+  catalog_endpoint: /v1/models
+  id_format: 'namespace/model, e.g. nousresearch/hermes-4-405b'
+  aggregates_third_party: true
+streaming:
+  supported: true
+  mechanism: server-sent-events
+  trigger: '"stream": true in the request body'
+pagination:
+  models_endpoint: none-observed
+metadata:
+  model_pricing_inline: true
+  note: /v1/models returns per-token pricing, context_length, and supported_parameters per model.
+idempotency:
+  supported: unknown
+  note: >-
+    Not documented on the accessible surface; chat completions are not idempotent
+    by nature. No Idempotency-Key parameter observed. No Idempotency pointer emitted.
+error_envelope:
+  shape: 'openai-style: error object with message, type, code fields'
+  payment_required: x402 envelope on HTTP 402 (see errors/nous-research-problem-types.yml)
+cross_links:
+  authentication: authentication/nous-research-authentication.yml
+  errors: errors/nous-research-problem-types.yml
+  lifecycle: lifecycle/nous-research-lifecycle.yml

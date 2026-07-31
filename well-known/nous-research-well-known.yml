@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: live probe of /.well-known/ on Nous Research hosts
+note: >-
+  No /.well-known discovery documents were served on any probed host. Absence is
+  valid, recorded data — Nous Research publishes no security.txt, OIDC discovery,
+  OAuth authorization-server metadata, api-catalog, or ai-plugin manifest.
+hosts:
+- host: https://inference-api.nousresearch.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://nousresearch.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

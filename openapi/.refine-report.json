@@ -1,0 +1,16 @@
+{
+  "provider": "nous-research",
+  "sources": [
+    "nous-research-chat-api-openapi.yml",
+    "nous-research-models-api-openapi.yml"
+  ],
+  "outputs": [
+    "nous-research-chat-api-openapi.yml",
+    "nous-research-models-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

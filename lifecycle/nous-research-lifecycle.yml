@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from the live API base path and host probes. Versioning/deprecation
+  policy docs are behind portal.nousresearch.com bot protection and were not read
+  verbatim.
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://inference-api.nousresearch.com/v1
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: No deprecation policy or Sunset/Deprecation header support observed. No Deprecation pointer emitted.
+sla:
+  url: null
+status_page:
+  url: null
+  note: status.nousresearch.com does not resolve; no public status page found. No StatusPage pointer emitted.
+model_lifecycle:
+  note: >-
+    The /v1/models catalog carries per-model created and (nullable) expiration_date
+    fields, so individual model availability is versioned in-band even though the
+    API version itself is a stable v1 path.
+deprecated_operations: []
