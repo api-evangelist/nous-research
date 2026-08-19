@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nous Research Inference API (Nous Portal) Chat API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a chat completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://inference-api.nousresearch.com/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "OpenAI-compatible chat completions. Provide a `model` id from GET /models and a `messages` array. Supports streaming via Server-Sent Events when `stream: true`. Authenticate with a Nous Portal API key as `Authorization: Bearer <key>`; alternatively an un-authenticated request returns HTTP 402 with an x402 Solana USDC payment envelope for pay-per-request access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

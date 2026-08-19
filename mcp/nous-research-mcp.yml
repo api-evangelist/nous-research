@@ -2,19 +2,24 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/nous-research-inference-api-openapi.yml
-note: >-
-  No official hosted/remote MCP server was found for Nous Research. This is a
-  DERIVED candidate tool list mapping the two verified inference-API operations
-  to MCP tools, as a starting point for an agent integration. The underlying API
-  is OpenAI-compatible, so existing OpenAI-compatible MCP servers can target it
-  by pointing base_url at https://inference-api.nousresearch.com/v1.
+note: No official hosted/remote MCP server was found for Nous Research. This is a DERIVED candidate tool
+  list mapping the two verified inference-API operations to MCP tools, as a starting point for an agent
+  integration. The underlying API is OpenAI-compatible, so existing OpenAI-compatible MCP servers can
+  target it by pointing base_url at https://inference-api.nousresearch.com/v1.
 server:
   name: nous-research
   transport: http
 tools:
 - name: list_models
-  description: List the models available through the Nous Research inference API, with pricing and context length.
+  description: List the models available through the Nous Research inference API, with pricing and context
+    length.
   source_operation: openapi/nous-research-inference-api-openapi.yml#listModels
 - name: create_chat_completion
   description: Create an OpenAI-compatible chat completion against a Nous Research or aggregated model.
   source_operation: openapi/nous-research-inference-api-openapi.yml#createChatCompletion
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census

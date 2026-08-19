@@ -1,0 +1,350 @@
+{
+  "item": [
+    {
+      "id": "1b843fb4-7158-42c6-8cd5-04cad5e3a443",
+      "name": "Chat",
+      "description": {
+        "content": "OpenAI-compatible chat completions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "269fe99d-b1cd-4a03-bb98-420bcb1714b2",
+          "name": "Create a chat completion",
+          "request": {
+            "name": "Create a chat completion",
+            "description": {
+              "content": "OpenAI-compatible chat completions. Provide a `model` id from GET /models and a `messages` array. Supports streaming via Server-Sent Events when `stream: true`. Authenticate with a Nous Portal API key as `Authorization: Bearer <key>`; alternatively an un-authenticated request returns HTTP 402 with an x402 Solana USDC payment envelope for pay-per-request access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86c704e6-639d-4930-a257-7d41ed23b607",
+              "name": "The chat completion result (or an SSE stream when `stream` is true).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nousresearch/hermes-4-405b\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"string\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"created\": 6006,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"index\": 4531,\n      \"message\": {\n        \"role\": \"user\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"index\": 3266,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 2179,\n    \"completion_tokens\": 1735,\n    \"total_tokens\": 4530\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f7ba718-468b-44fa-85ce-91c0735acb86",
+              "name": "Malformed request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nousresearch/hermes-4-405b\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"string\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b45bc940-ff56-4d08-a45f-474a0c1b603f",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nousresearch/hermes-4-405b\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"string\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00e5550f-8f0a-4071-a7b9-d4799973b439",
+              "name": "Payment required. Returned for un-authenticated requests; body is an x402 payment envelope describing the exact Solana USDC micropayment accepted for this request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nousresearch/hermes-4-405b\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"string\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"x402Version\": 1,\n  \"accepts\": [\n    {\n      \"scheme\": \"exact\",\n      \"network\": \"solana\",\n      \"maxAmountRequired\": \"string\",\n      \"resource\": \"string\",\n      \"description\": \"string\",\n      \"mimeType\": \"string\",\n      \"payTo\": \"string\",\n      \"maxTimeoutSeconds\": 8409,\n      \"asset\": \"string\"\n    },\n    {\n      \"scheme\": \"exact\",\n      \"network\": \"solana\",\n      \"maxAmountRequired\": \"string\",\n      \"resource\": \"string\",\n      \"description\": \"string\",\n      \"mimeType\": \"string\",\n      \"payTo\": \"string\",\n      \"maxTimeoutSeconds\": 508,\n      \"asset\": \"string\"\n    }\n  ],\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "381b94a0-031b-47f0-b683-2a14b352f85e",
+              "name": "Rate limited.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nousresearch/hermes-4-405b\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    },\n    {\n      \"role\": \"tool\",\n      \"content\": \"string\"\n    }\n  ],\n  \"stream\": false,\n  \"temperature\": \"<number>\",\n  \"max_tokens\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://inference-api.nousresearch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "016c947a-f74b-4d0a-bb43-f326a8336cdb",
+    "name": "Nous Research Inference API (Nous Portal) Chat API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1. Exposes a model catalog and a chat-completions endpoint aggregating Nous Research's own Hermes models alongside a broad catalog of third-party open and frontier models (OpenRouter-style routing). Requests authenticate with a Nous Portal API key (Bearer token). The API additionally supports the x402 HTTP payment protocol: an un-authenticated request returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC micropayment, enabling pay-per- request agentic access without a pre-provisioned account. This specification was DERIVED by probing the live public API (GET /v1/models returns 200 with the model catalog; POST /v1/chat/completions returns 402 with an x402 payment envelope when unauthenticated). Only endpoints observed on the live host are described here; other OpenAI- compatible routes may exist but were not verified.",
+      "type": "text/plain"
+    }
+  }
+}

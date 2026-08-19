@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nous Research Inference API (Nous Portal) Chat Models API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://inference-api.nousresearch.com/v1/models"
+          },
+          "docs": "Returns the catalog of models available through the Nous Research inference API, including id, pricing, context length, architecture (input/output modalities), and supported parameters. Public — no authentication required (verified 200 without credentials)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

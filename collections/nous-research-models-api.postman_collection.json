@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "d58f385d-2fde-4648-9f86-bf39b580ccce",
+      "name": "Models",
+      "description": {
+        "content": "Model discovery and catalog.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b44dad53-1a6e-4c88-8836-282da7d46978",
+          "name": "List available models",
+          "request": {
+            "name": "List available models",
+            "description": {
+              "content": "Returns the catalog of models available through the Nous Research inference API, including id, pricing, context length, architecture (input/output modalities), and supported parameters. Public — no authentication required (verified 200 without credentials).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf3afbde-288a-47fa-8cc8-a1f9543e1b8d",
+              "name": "The list of available models.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"nousresearch/hermes-4-405b\",\n      \"name\": \"string\",\n      \"canonical_slug\": \"string\",\n      \"hugging_face_id\": \"string\",\n      \"description\": \"string\",\n      \"context_length\": 8623,\n      \"architecture\": {\n        \"modality\": \"string\",\n        \"input_modalities\": [\n          \"string\",\n          \"string\"\n        ],\n        \"output_modalities\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tokenizer\": \"string\"\n      },\n      \"pricing\": {\n        \"prompt\": \"string\",\n        \"completion\": \"string\",\n        \"input_cache_read\": \"string\"\n      },\n      \"supported_parameters\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"nousresearch/hermes-4-405b\",\n      \"name\": \"string\",\n      \"canonical_slug\": \"string\",\n      \"hugging_face_id\": \"string\",\n      \"description\": \"string\",\n      \"context_length\": 2663,\n      \"architecture\": {\n        \"modality\": \"string\",\n        \"input_modalities\": [\n          \"string\",\n          \"string\"\n        ],\n        \"output_modalities\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tokenizer\": \"string\"\n      },\n      \"pricing\": {\n        \"prompt\": \"string\",\n        \"completion\": \"string\",\n        \"input_cache_read\": \"string\"\n      },\n      \"supported_parameters\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://inference-api.nousresearch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c19214b6-d3ca-490f-855e-f580d471d097",
+    "name": "Nous Research Inference API (Nous Portal) Chat Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1. Exposes a model catalog and a chat-completions endpoint aggregating Nous Research's own Hermes models alongside a broad catalog of third-party open and frontier models (OpenRouter-style routing). Requests authenticate with a Nous Portal API key (Bearer token). The API additionally supports the x402 HTTP payment protocol: an un-authenticated request returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC micropayment, enabling pay-per- request agentic access without a pre-provisioned account. This specification was DERIVED by probing the live public API (GET /v1/models returns 200 with the model catalog; POST /v1/chat/completions returns 402 with an x402 payment envelope when unauthenticated). Only endpoints observed on the live host are described here; other OpenAI- compatible routes may exist but were not verified.",
+      "type": "text/plain"
+    }
+  }
+}
