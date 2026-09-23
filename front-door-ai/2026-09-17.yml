@@ -1,0 +1,29 @@
+# Front Door AI Index — nous-research — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: nous-research
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: nousresearch.com
+  final_host: nousresearch.com
+  ownership: own
+  owner: nous-research
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 9
+  host_score: 9
+  density: 44.78
+  words: 201
+  tiers:
+    agentic: 1
+    core: 6
+    model: 2
+  ambiguous: 1
+  top_terms:
+    AI: 5
+    Hugging Face: 2
+    artificial intelligence: 1
+    fine-tune: 1
+    intelligence: 1

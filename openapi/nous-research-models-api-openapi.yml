@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Nous Research Inference API (Nous Portal) Chat Models API
+  title: Nous Research Inference API (Nous Portal) Models API
   version: v1
-  description: 'OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1. Exposes a model catalog and a chat-completions endpoint aggregating Nous Research''s own Hermes models alongside a broad catalog of third-party open and frontier models (OpenRouter-style routing). Requests authenticate with a Nous Portal API key (Bearer token). The API additionally supports the x402 HTTP payment protocol: an un-authenticated request returns HTTP 402 with an `accepts` envelope describing an exact Solana USDC micropayment, enabling pay-per- request agentic access without a pre-provisioned account. This specification was DERIVED by probing the live public API (GET /v1/models returns 200 with the model catalog; POST /v1/chat/completions returns 402 with an x402 payment envelope when unauthenticated). Only endpoints observed on the live host are described here; other OpenAI- compatible routes may exist but were not verified.'
+  description: OpenAI-compatible inference API served by Nous Research at https://inference-api.nousresearch.com/v1.
   x-source: https://inference-api.nousresearch.com/v1
   x-derived-by: api-evangelist enrichment pipeline (live probe)
 servers:
