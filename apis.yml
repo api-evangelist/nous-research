@@ -51,7 +51,7 @@ image: https://nousresearch.com/wp-content/uploads/2024/03/android-chrome-512x51
 tags:
 - Company
 - Artificial Intelligence
-- Machine-Learning
+- Machine Learning
 - LLM
 - Inference
 - Agents
@@ -66,6 +66,7 @@ tags_raw:
 - Agents
 - Open Weights
 - x402
+- Machine-Learning
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
