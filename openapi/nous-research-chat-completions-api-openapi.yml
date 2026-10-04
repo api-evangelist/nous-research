@@ -11,13 +11,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: Chat
+- name: Chat Completions
   description: OpenAI-compatible chat completions.
 paths:
   /chat/completions:
     post:
       tags:
-      - Chat
+      - Chat Completions
       operationId: createChatCompletion
       summary: Create a chat completion
       description: 'OpenAI-compatible chat completions. Provide a `model` id from GET /models and a `messages` array. Supports streaming via Server-Sent Events when `stream: true`. Authenticate with a Nous Portal API key as `Authorization: Bearer `; alternatively an un-authenticated request returns HTTP 402 with an x402 Solana USDC payment envelope for pay-per-request access.'
@@ -107,6 +107,46 @@ components:
               type: integer
             total_tokens:
               type: integer
+    ChatCompletionRequest:
+      type: object
+      properties:
+        model:
+          type: string
+          description: A model id from GET /models.
+          example: nousresearch/hermes-4-405b
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        stream:
+          type: boolean
+          description: Stream the response as Server-Sent Events.
+          default: false
+        temperature:
+          type: number
+        max_tokens:
+          type: integer
+        top_p:
+          type: number
+        tools:
+          type: array
+          items:
+            type: object
+      required:
+      - model
+      - messages
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
     X402PaymentRequired:
       type: object
       description: x402 payment envelope returned with HTTP 402.
@@ -142,46 +182,6 @@ components:
                 description: Token mint (USDC on Solana).
         error:
           type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-            type:
-              type: string
-            code:
-              type: string
-    ChatCompletionRequest:
-      type: object
-      properties:
-        model:
-          type: string
-          description: A model id from GET /models.
-          example: nousresearch/hermes-4-405b
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-        stream:
-          type: boolean
-          description: Stream the response as Server-Sent Events.
-          default: false
-        temperature:
-          type: number
-        max_tokens:
-          type: integer
-        top_p:
-          type: number
-        tools:
-          type: array
-          items:
-            type: object
-      required:
-      - model
-      - messages
   securitySchemes:
     bearerAuth:
       type: http

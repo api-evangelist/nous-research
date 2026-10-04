@@ -31,6 +31,15 @@ paths:
                 $ref: '#/components/schemas/ModelList'
 components:
   schemas:
+    ModelList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+      required:
+      - data
     Model:
       type: object
       description: A model available through the inference API.
@@ -80,15 +89,6 @@ components:
       required:
       - id
       - name
-    ModelList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
-      required:
-      - data
   securitySchemes:
     bearerAuth:
       type: http

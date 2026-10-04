@@ -75,18 +75,6 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: nous-research:nous-research-chat-api
-  name: Nous Research Chat API
-  description: OpenAI-compatible chat completions.
-  humanURL: https://portal.nousresearch.com/docs
-  baseURL: https://inference-api.nousresearch.com/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/nous-research-chat-api-openapi.yml
-  - type: InterfaceLicense
-    url: https://portal.nousresearch.com/docs
 - aid: nous-research:nous-research-models-api
   name: Nous Research Models API
   description: Model discovery and catalog.
@@ -97,6 +85,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/nous-research-models-api-openapi.yml
+  - type: InterfaceLicense
+    url: https://portal.nousresearch.com/docs
+- aid: nous-research:nous-research-chat-completions-api
+  name: Nous Research Chat Completions API
+  description: OpenAI-compatible chat completions.
+  humanURL: https://portal.nousresearch.com/docs
+  baseURL: https://inference-api.nousresearch.com/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/nous-research-chat-completions-api-openapi.yml
   - type: InterfaceLicense
     url: https://portal.nousresearch.com/docs
 common:
