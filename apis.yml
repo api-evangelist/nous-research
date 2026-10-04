@@ -57,6 +57,7 @@ tags:
 - Agents
 - Open Weights
 - x402
+- Foundation Models
 tags_raw:
 - Company
 - Ai
@@ -67,6 +68,7 @@ tags_raw:
 - Open Weights
 - x402
 - Machine-Learning
+- Foundation Models
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
