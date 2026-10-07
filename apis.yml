@@ -100,6 +100,10 @@ apis:
   - type: InterfaceLicense
     url: https://portal.nousresearch.com/docs
 common:
+- type: Pricing
+  url: https://portal.nousresearch.com/manage-subscription
+- type: Plans
+  url: plans/nous-research-plans-pricing.yml
 - type: AgenticAccess
   url: agentic-access/nous-research-agentic-access.yml
 - type: X-MCPServerCandidate
