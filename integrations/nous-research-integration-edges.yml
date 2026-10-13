@@ -1,0 +1,44 @@
+edges:
+- partner_name: OpenRouter
+  partner: openrouter
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://openrouter.ai/api/v1/models
+  coverage_role:
+  - model-maker
+  router_signals:
+    model-maker:
+      models: 3
+      router_ids:
+      - nousresearch
+      tools_share: 0.0
+      structured_output_share: 1.0
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/nous-research/blob/main/openapi/nous-research-chat-completions-api-openapi.yml#L5
+  contract_reference:
+    repo: nous-research
+    spec_file: nous-research-chat-completions-api-openapi.yml
+    property: description
+    value: OpenAI-compatible
+    note: 'nous-research declares OpenAI compatibility: ''description: OpenAI-compatible inference API served by
+      Nous Research at https://inference-api.nousresearch.com/v1.'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-13'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://openrouter.ai/api/v1/models
