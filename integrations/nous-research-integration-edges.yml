@@ -35,7 +35,7 @@ edges:
     note: 'nous-research declares OpenAI compatibility: ''description: OpenAI-compatible inference API served by
       Nous Research at https://inference-api.nousresearch.com/v1.'''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-13'
+    detected: '2026-10-15'
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
 generated: '2026-10-13'
