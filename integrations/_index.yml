@@ -34,3 +34,97 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: nous-research-agent-skills-own-github-org
+  label: Agent Skills (own GitHub org)
+  partner_name: Agent Skills (own GitHub org)
+  category: Agent Skills package
+  type: register
+  channel: provider-built
+  evidence: https://github.com/NousResearch/hermes-agent
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: nousresearch
+    matched_by: org-profile-domain:nousresearch.com
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: nous-research-skills-sh
+  label: skills.sh
+  partner_name: skills.sh
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://www.skills.sh/nousresearch/hermes-agent
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: skills.sh (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: nousresearch
+    matched_by: org-profile-domain:nousresearch.com
+    sample_skills:
+    - architecture-diagram
+    - arxiv
+    - claude-design
+    - design-md
+    - dogfood
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: nous-research-claude-plugins-dev
+  label: claude-plugins.dev
+  partner_name: claude-plugins.dev
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://claude-plugins.dev/skills/@nousresearch/hermes-agent
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: claude-plugins.dev (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: nousresearch
+    matched_by: org-profile-domain:nousresearch.com
+    sample_skills:
+    - hermes-agent
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: nous-research-skillsmp-skillsmp-com
+  label: SkillsMP (skillsmp.com)
+  partner_name: SkillsMP (skillsmp.com)
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://skillsmp.com/creators/nousresearch/hermes-agent
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: SkillsMP (skillsmp.com) (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: nousresearch
+    matched_by: org-profile-domain:nousresearch.com
+    sample_skills:
+    - optional-skills-autonomous-ai-agents-agent-merge-conflict-arbiter
+    - optional-skills-autonomous-ai-agents-antigravity-cli
+    - optional-skills-autonomous-ai-agents-grok
+    - optional-skills-autonomous-ai-agents-honcho
+    - optional-skills-autonomous-ai-agents-openhands
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
