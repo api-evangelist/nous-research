@@ -64,6 +64,123 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Nous Research is a company surfaced as a portfolio company of paradigm and added to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.
+Nous Research is an AI research and infrastructure company ("The AI Accelerator Company") known for the open-weight Hermes family of language models (including Hermes 4) and for Nous Portal, an OpenAI-compatible inference API served at inference-api.nousresearch.com. The Portal aggregates Nous's own Hermes models alongside a broad catalog of open and frontier third-party models (OpenRouter- style routing, 280+ models) behind a single chat-completions endpoint. Distinctively, the inference API supports the x402 HTTP payment protocol, returning HTTP 402 with a Solana USDC micropayment envelope so agents can pay per request without a pre-provisioned account. Beyond inference, Nous ships the Hermes Agent framework, Atropos RL environments, and Psyche/DisTrO for distributed model training over the internet. Backed by Paradigm.
 
-Backed by: paradigm — https://nousresearch.com
+**Areas:** Company · Artificial Intelligence · Machine Learning · LLM · Inference · Agents · Open Weights · x402 · Foundation Models
+
+## Nous Research on APIs.io
+
+Everything profiled for Nous Research is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nous-research/](https://apis.io/providers/nous-research/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Nous Research Models API](https://apis.io/apis/nous-research/nous-research-models-api/) — Model discovery and catalog.
+- [Nous Research Chat Completions API](https://apis.io/apis/nous-research/nous-research-chat-completions-api/) — OpenAI-compatible chat completions.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [nous-research](https://apis.io/servers/nous-research/nous-research/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Nous Research Agentic Access](https://apis.io/agentic-access/nous-research/nous-research-agentic-access/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Nous Research Inference API (Nous Portal) Chat API](https://apis.io/collections/nous-research/open-nous-research-chat-api/)
+- [Nous Research Inference API (Nous Portal) Chat Models API](https://apis.io/collections/nous-research/open-nous-research-models-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Nous Research Inference Api Overlay](https://apis.io/overlays/nous-research/nous-research-inference-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nous Research Authentication](https://apis.io/security/nous-research/nous-research-authentication/)
+- [Nous Research Domain Security](https://apis.io/security/nous-research/nous-research-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Nous Research Plans Pricing](https://apis.io/plans/nous-research/nous-research-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://nousresearch.com)
+- [Documentation](https://portal.nousresearch.com/docs)
+- [API reference](https://portal.nousresearch.com/docs)
+- [Pricing](https://portal.nousresearch.com/manage-subscription)
+- [Sign up](https://portal.nousresearch.com)
+- [Support](https://discord.gg/jqVphNsB4H)
+- [Blog](https://nousresearch.com/blog)
+- [GitHub](https://github.com/NousResearch)
+
+## API Evangelist rating
+
+**Kin Score 27.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 13.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 33.9 |
+| Access clarity | 48.7 |
+
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nous-research/](https://apis.io/providers/nous-research/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nous Research: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nous-research/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
